@@ -2,9 +2,10 @@ const express = require("express");
 const https = require("https");
 
 const app = express();
+const token = require("./weatherToken.json");
 
 app.get('/', (req, res)=>{
-  const url = "https://api.openweathermap.org/data/2.5/weather?q=London&units=metric&appid=b0faa5c6ae23afdc9dc7c0dbb85ad472";
+  const url = "https://api.openweathermap.org/data/2.5/weather?q=London&units=metric&appid=" + token.token;
 
   https.get(url, function(response){
     console.log(response.statusCode);
